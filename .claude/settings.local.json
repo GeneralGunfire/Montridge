@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"C:\\\\Montridge\\\\montridge_flask\\\\react-app\\\\public\"\" 2>/dev/null && cat \"C:UsersGener.claudeprojectsc--MontridgememoryMEMORY.md\" 2>/dev/null || echo \"no memory file \")",
+      "Bash(ls /c/Montridge/*.png /c/Montridge/*.jpg /c/Montridge/*.jpeg)",
+      "Bash(python skills/ui-ux-pro-max/scripts/search.py \"news intelligence SaaS platform media AI analytics dashboard\" --design-system -p \"Montridge\")",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"news intelligence SaaS platform media AI analytics dashboard\" --design-system -p \"Montridge\")",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"dark SaaS analytics dashboard intelligence\" --design-system -p \"Montridge\")",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"SaaS dark mode professional\" --domain style)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"SaaS landing page hero features pricing\" --domain landing)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"Inter modern clean\" --domain typography)",
+      "Bash(npx vite:*)",
+      "Bash(curl -s \"http://localhost:5000/api/articles?importance=high&limit=5\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f''''Breaking: {len\\(d\\)} articles''''\\)\" curl -s \"http://localhost:5000/api/search?q=Iran\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f''''Search: {len\\(d\\)} results''''\\)\")",
+      "Skill(gsd:plan-milestone-gaps)",
+      "Skill(gsd:plan-milestone-gaps:*)",
+      "Bash(find c:/Montridge -name *.tsx -o -name *.py)",
+      "Bash(find c:/Montridge -name *.tsx)",
+      "Bash(python3 -c \":*)",
+      "Bash(grep -n \"window\\\\.location\\\\.href = \\\\`/article/\" C:/Montridge/montridge_flask/newdashboard/src/pages/Dashboard.tsx)",
+      "Bash(grep -n \"setShowSettings\\(true\\)\\\\|href={\\\\`/article/\" C:/Montridge/montridge_flask/newdashboard/src/pages/Dashboard.tsx)",
+      "Bash(node -e \"console.log\\(''''node ok''''\\)\")",
+      "Bash(npx playwright:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5000/)",
+      "Bash(node -e \":*)",
+      "Bash(ls -la \"C:\\\\Montridge\\\\montridge_flask\\\\newdashboard\\\\src\\\\components\"\" | grep -i -E \"nav)",
+      "Bash(sidebar)",
+      "Bash(header)",
+      "Bash(menu \")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5000/map)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5000/api/map-events)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "claude-flow"
+  ],
+  "enableAllProjectMcpServers": true
+}
