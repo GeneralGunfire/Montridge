@@ -1,6 +1,7 @@
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
+import os
 import feedparser
 import psycopg2
 from psycopg2.extras import Json
@@ -21,10 +22,11 @@ logger = logging.getLogger(__name__)
 # -------------------------------
 # PostgreSQL connection settings
 # -------------------------------
-DB_HOST = "localhost"
-DB_NAME = "montridge_db"
-DB_USER = "postgres"
-DB_PORT = 5432
+DB_HOST = os.environ.get('DB_HOST', 'localhost')
+DB_NAME = os.environ.get('DB_NAME', 'montridge_db')
+DB_USER = os.environ.get('DB_USER', 'postgres')
+DB_PASS = os.environ.get('DB_PASSWORD', '')
+DB_PORT = int(os.environ.get('DB_PORT', '5432'))
 
 # Feed timeout in seconds
 FEED_TIMEOUT = 10

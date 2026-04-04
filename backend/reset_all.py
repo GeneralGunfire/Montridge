@@ -1,10 +1,12 @@
+import os
 import psycopg2
 
 conn = psycopg2.connect(
-    host="localhost",
-    database="montridge_db",
-    user="postgres",
-    port=5432
+    host=os.environ.get('DB_HOST', 'localhost'),
+    database=os.environ.get('DB_NAME', 'montridge_db'),
+    user=os.environ.get('DB_USER', 'postgres'),
+    password=os.environ.get('DB_PASSWORD', ''),
+    port=int(os.environ.get('DB_PORT', '5432'))
 )
 
 cur = conn.cursor()

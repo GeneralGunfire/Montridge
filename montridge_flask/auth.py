@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from functools import wraps
 from flask import request, jsonify
 
-SECRET_KEY = os.getenv('JWT_SECRET', 'montridge-secret-key-2026')
+SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'change-this-in-production')
 JWT_EXPIRY_DAYS = 1  # 24 hours
 
 def hash_password(password):

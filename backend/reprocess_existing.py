@@ -14,6 +14,7 @@ Usage:
 """
 
 import sys
+import os
 import io
 import json
 import time
@@ -29,16 +30,19 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 # --- GROQ DUAL-KEY SETUP ---
 API_KEYS = [
+    os.environ.get('GROQ_API_KEY', ''),
+    os.environ.get('GROQ_API_KEY_2', '')
 ]
 CURRENT_KEY_INDEX = 0
 MODEL = "llama-3.3-70b-versatile"
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 DB_CONFIG = {
-    'dbname': 'montridge_db',
-    'user': 'postgres',
-    'host': 'localhost',
-    'port': 5432
+    'dbname': os.environ.get('DB_NAME', 'montridge_db'),
+    'user': os.environ.get('DB_USER', 'postgres'),
+    'password': os.environ.get('DB_PASSWORD', ''),
+    'host': os.environ.get('DB_HOST', 'localhost'),
+    'port': int(os.environ.get('DB_PORT', '5432'))
 }
 
 BATCH_SIZE = 20
