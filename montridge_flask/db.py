@@ -23,12 +23,13 @@ def _interleave_by_topic(rows, max_per_topic=3, limit=20):
     return result
 
 def get_connection():
+    import os
     return psycopg2.connect(
-        dbname="montridge_db",
-        user="postgres",
-        password="SQL!$N0TN0RM@LL_1t$_$0_W13rd2026",
-        host="localhost",
-        port=5432
+        dbname=os.environ.get('DB_NAME', 'montridge_db'),
+        user=os.environ.get('DB_USER', 'postgres'),
+        password=os.environ.get('DB_PASSWORD', ''),
+        host=os.environ.get('DB_HOST', 'localhost'),
+        port=int(os.environ.get('DB_PORT', '5432'))
     )
 
 def fetch_articles(category=None, search=None, importance=None, sentiment=None, limit=20, offset=0, days=7, source=None, min_score=None):

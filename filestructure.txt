@@ -338,6 +338,7 @@
             |-- SKILL.md
     |-- statusline.mjs
     |-- statusline.sh
+|-- .env.example
 |-- .gitignore
 |-- .mcp.json
 |-- 85)
@@ -419,6 +420,7 @@
     |-- pipeline_20260403_205002.log
     |-- pipeline_20260404_115001.log
     |-- pipeline_20260404_165046.log
+    |-- pipeline_20260404_215001.log
     |-- reprocess_existing.py
     |-- reset_all.py
     |-- reset_failed.py
@@ -634,6 +636,8 @@
             |-- main.tsx
         |-- tsconfig.json
         |-- vite.config.ts
+    |-- Procfile
+    |-- render.yaml
     |-- requirements.txt
     |-- settings
         |-- .env.example
@@ -651,6 +655,9 @@
             |-- main.tsx
         |-- tsconfig.json
         |-- vite.config.ts
+    |-- static
+        |-- robots.txt
+        |-- sitemap.xml
     |-- tmpclaude-6027-cwd
     |-- __pycache__
         |-- app.cpython-313.pyc

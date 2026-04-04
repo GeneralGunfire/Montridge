@@ -17,6 +17,10 @@ import os
 
 app = Flask(__name__, static_folder='newlandingpage/dist', static_url_path='')
 
+# Production settings
+app.config['SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'fallback-dev-key-change-in-production')
+DEBUG = os.environ.get('FLASK_ENV', 'production') != 'production'
+
 # Configure CORS for React frontend
 CORS(app, resources={
     r"/api/*": {
@@ -114,6 +118,15 @@ def map_static(filename):
 @app.route('/pagenotfound/<path:filename>')
 def pagenotfound_static(filename):
     return send_from_directory('pagenotfound/dist', filename)
+
+# === SEO: ROBOTS.TXT AND SITEMAP ===
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static', 'robots.txt')
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('static', 'sitemap.xml')
 
 # === 404 ERROR HANDLER ===
 @app.errorhandler(404)
@@ -579,4 +592,6 @@ def delete_account():
 
 # === START SERVER ===
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    is_production = os.environ.get('FLASK_ENV', 'production') == 'production'
+    app.run(host='0.0.0.0', port=port, debug=not is_production)
