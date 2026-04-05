@@ -21,15 +21,21 @@ app = Flask(__name__, static_folder='newlandingpage/dist', static_url_path='')
 app.config['SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'fallback-dev-key-change-in-production')
 DEBUG = os.environ.get('FLASK_ENV', 'production') != 'production'
 
-# Configure CORS for React frontend
+# Configure CORS for React frontend (supports local, Vercel, and self-hosted)
+FRONTEND_URL = os.environ.get('FRONTEND_URL', '')
+allowed_origins = [
+    "http://localhost:3000",      # Local development
+    "http://localhost:5173",      # Vite dev server
+    "http://127.0.0.1:3000",     # Localhost alternative
+    "http://127.0.0.1:5173",     # Localhost Vite
+]
+# Add dynamic frontend URL if provided (for Vercel or other deployments)
+if FRONTEND_URL:
+    allowed_origins.append(FRONTEND_URL)
+
 CORS(app, resources={
     r"/api/*": {
-        "origins": [
-            "http://localhost:3000",      # Local development
-            "http://localhost:5173",      # Vite dev server
-            "http://127.0.0.1:3000",     # Localhost alternative
-            "http://127.0.0.1:5173",     # Localhost Vite
-        ],
+        "origins": allowed_origins,
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"],
         "supports_credentials": True,
