@@ -1,35 +1,24 @@
-# Environment variables
+# Next.js
+.next/
+out/
+build/
+
+# Environment
 .env
-*.env
 .env.local
 .env.*.local
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
 
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
 venv/
-ENV/
 env/
 .venv
 
@@ -40,23 +29,18 @@ env/
 *.swo
 *~
 .DS_Store
-*.sublime-project
-*.sublime-workspace
-
-# Node/JavaScript
-node_modules/
-npm-debug.log
-yarn-error.log
-dist/
-.next/
 
 # Logs
 *.log
-pipeline_*.log
 logs/
+pipeline_*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
 
 # OS
-.DS_Store
 Thumbs.db
 
 # Testing
@@ -64,12 +48,6 @@ Thumbs.db
 .coverage
 htmlcov/
 
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
-# Temporary files
+# Temporary
 *.tmp
-*.temp
 .cache/

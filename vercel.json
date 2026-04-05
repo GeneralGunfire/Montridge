@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "framework": "nextjs",
+  "env": [
+    {
+      "key": "GROQ_API_KEY",
+      "description": "Groq API Key"
+    },
+    {
+      "key": "GROQ_API_KEY_2",
+      "description": "Groq API Key 2"
+    },
+    {
+      "key": "DB_HOST",
+      "description": "Database host"
+    },
+    {
+      "key": "DB_NAME",
+      "description": "Database name"
+    },
+    {
+      "key": "DB_USER",
+      "description": "Database user"
+    },
+    {
+      "key": "DB_PASSWORD",
+      "description": "Database password"
+    },
+    {
+      "key": "DB_PORT",
+      "description": "Database port"
+    },
+    {
+      "key": "JWT_SECRET_KEY",
+      "description": "JWT secret key"
+    }
+  ]
+}

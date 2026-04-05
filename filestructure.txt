@@ -339,6 +339,7 @@
     |-- statusline.mjs
     |-- statusline.sh
 |-- .env.example
+|-- .env.local.example
 |-- .gitignore
 |-- .mcp.json
 |-- 85)
@@ -433,9 +434,15 @@
         |-- ai_processor.cpython-313.pyc
         |-- rss_fetcher.cpython-313.pyc
 |-- CLAUDE.md
+|-- DEPLOYMENT_HYBRID.md
 |-- fix2_reprocess.py
 |-- fix_articles.py
 |-- fix_empty.py
+|-- frontend
+    |-- vercel.json
+|-- lib
+    |-- auth.ts
+    |-- db.ts
 |-- localStorage.setItem('guestMode'
 |-- montridge_flask
     |-- .claude
@@ -663,14 +670,32 @@
         |-- app.cpython-313.pyc
         |-- auth.cpython-313.pyc
         |-- db.cpython-313.pyc
+|-- next.config.js
 |-- NOW()
 |-- package-lock.json
 |-- package.json
+|-- pages
+    |-- api
+        |-- articles
+            |-- [id].ts
+        |-- articles.ts
+        |-- auth
+            |-- login.ts
+            |-- signup.ts
+        |-- groq.ts
+        |-- health.ts
+        |-- status.ts
+        |-- trending-topics.ts
+    |-- index.tsx
+    |-- _app.tsx
 |-- r.status
 |-- RSS_FINAL_REPORT.md
 |-- RSS_TEST_REPORT.md
 |-- run_pipeline.bat
 |-- test_fix_5articles.py
 |-- test_system.py
+|-- tsconfig.json
+|-- vercel.json
+|-- VERCEL_DEPLOYMENT.md
 |-- window.scrollBy(0
 |-- {,+
