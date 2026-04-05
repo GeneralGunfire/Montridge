@@ -2,17 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  env: {
-    GROQ_API_KEY: process.env.GROQ_API_KEY || 'placeholder',
-    GROQ_API_KEY_2: process.env.GROQ_API_KEY_2 || 'placeholder',
-    DB_HOST: process.env.DB_HOST || 'localhost',
-    DB_NAME: process.env.DB_NAME || 'montridge_db',
-    DB_USER: process.env.DB_USER || 'postgres',
-    DB_PASSWORD: process.env.DB_PASSWORD || '',
-    DB_PORT: process.env.DB_PORT || '5432',
-    JWT_SECRET_KEY: process.env.JWT_SECRET_KEY || 'change-in-production',
-  },
-  headers: async () => {
+  async headers() {
     return [
       {
         source: '/api/:path*',
