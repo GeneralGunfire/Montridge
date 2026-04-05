@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { query } from '@/lib/db'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
@@ -7,14 +6,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const result = await query(
-      'SELECT MAX(processed_at) as last_fetched_at FROM articles WHERE processed_at IS NOT NULL'
-    )
-
-    res.status(200).json({
-      last_fetched_at: result[0]?.last_fetched_at || null,
+    return res.status(200).json({
       status: 'ok',
       timestamp: new Date().toISOString(),
+      app: 'Montridge Next.js',
+      environment: process.env.NODE_ENV || 'development',
+      message: 'Application is running. Configure Groq API keys and database connection in environment variables.',
     })
   } catch (error) {
     console.error(error)

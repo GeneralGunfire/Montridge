@@ -340,6 +340,7 @@
     |-- statusline.sh
 |-- .env.example
 |-- .env.local.example
+|-- .env.vercel
 |-- .gitignore
 |-- .mcp.json
 |-- 85)

@@ -16,12 +16,19 @@ interface GroqResponse {
   bias_indicators: { emotional_language: boolean; one_sided: boolean; has_quotes: boolean; has_data: boolean }
 }
 
-const API_KEYS = [process.env.GROQ_API_KEY || '', process.env.GROQ_API_KEY_2 || '']
+const API_KEYS = [
+  process.env.GROQ_API_KEY || 'placeholder',
+  process.env.GROQ_API_KEY_2 || 'placeholder'
+]
 let currentKeyIndex = 0
 
 function getCurrentHeaders() {
+  const key = API_KEYS[currentKeyIndex]
+  if (!key || key === 'placeholder') {
+    throw new Error('Groq API keys not configured. Configure them in environment variables.')
+  }
   return {
-    'Authorization': `Bearer ${API_KEYS[currentKeyIndex]}`,
+    'Authorization': `Bearer ${key}`,
     'Content-Type': 'application/json',
   }
 }
