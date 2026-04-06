@@ -323,7 +323,6 @@ def get_source_credibility():
 
 @app.route("/api/pipeline/trigger", methods=["POST"])
 @limiter.limit("1 per minute")
-@require_auth
 def trigger_pipeline():
     try:
         try:
