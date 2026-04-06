@@ -1,5 +1,4 @@
 {
-  "buildCommand": "cd montridge_flask/newlandingpage && npm install && npm run build",
   "outputDirectory": "montridge_flask/newlandingpage/dist",
   "routes": [
     {
