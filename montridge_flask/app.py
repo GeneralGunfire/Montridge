@@ -23,6 +23,9 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+# Get the absolute path to the montridge_flask directory for serving static files
+MONTRIDGE_FLASK_DIR = os.path.dirname(os.path.abspath(__file__))
+
 app = Flask(__name__, static_folder='newlandingpage/dist', static_url_path='')
 
 # Configure CORS for React frontend
@@ -52,81 +55,81 @@ limiter = Limiter(
 # === SERVE LANDING PAGE ===
 @app.route("/")
 def index():
-    return send_from_directory('montridge_flask/newlandingpage/dist', 'index.html')
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'newlandingpage/dist'), 'index.html')
 
 # === SERVE LOGIN APP ===
 @app.route('/login')
 @app.route('/login/')
 def login_page():
-    return send_from_directory('montridge_flask/login-app/dist', 'index.html')
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'login-app/dist'), 'index.html')
 
 @app.route('/login/<path:filename>')
 def serve_login_assets(filename):
-    return send_from_directory('montridge_flask/login-app/dist', filename)
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'login-app/dist'), filename)
 
 # === SERVE DASHBOARD APP ===
 @app.route('/dashboard')
 @app.route('/dashboard/')
 def dashboard_page():
-    return send_from_directory('montridge_flask/newdashboard/dist', 'index.html')
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'newdashboard/dist'), 'index.html')
 
 # === SERVE ARTICLE DETAIL PAGE (same React app, different URL) ===
 @app.route('/article/<int:article_id>')
 def article_detail_page(article_id):
-    return send_from_directory('montridge_flask/newdashboard/dist', 'index.html')
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'newdashboard/dist'), 'index.html')
 
 @app.route('/dashboard/<path:filename>')
 def serve_dashboard_assets(filename):
-    return send_from_directory('montridge_flask/newdashboard/dist', filename)
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'newdashboard/dist'), filename)
 
 # === SERVE ONBOARDING APP ===
 @app.route('/onboarding')
 @app.route('/onboarding/')
 def onboarding():
-    return send_from_directory('montridge_flask/onboarding/dist', 'index.html')
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'onboarding/dist'), 'index.html')
 
 @app.route('/onboarding/<path:filename>')
 def onboarding_static(filename):
-    return send_from_directory('montridge_flask/onboarding/dist', filename)
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'onboarding/dist'), filename)
 
 # === SERVE SETTINGS APP ===
 @app.route('/settings')
 @app.route('/settings/')
 def settings():
-    return send_from_directory('montridge_flask/settings/dist', 'index.html')
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'settings/dist'), 'index.html')
 
 @app.route('/settings/<path:filename>')
 def settings_static(filename):
-    return send_from_directory('montridge_flask/settings/dist', filename)
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'settings/dist'), filename)
 
 # === SERVE INTELLIGENCE (ARTICLE DETAIL) APP ===
 @app.route('/intelligence/<int:article_id>')
 def intelligence(article_id):
-    return send_from_directory('montridge_flask/intelligence/dist', 'index.html')
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'intelligence/dist'), 'index.html')
 
 @app.route('/intelligence/<path:filename>')
 def intelligence_static(filename):
-    return send_from_directory('montridge_flask/intelligence/dist', filename)
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'intelligence/dist'), filename)
 
 # === SERVE MAP PAGE ===
 @app.route('/map')
 @app.route('/map/')
 def map_page():
-    return send_from_directory('montridge_flask/map', 'index.html')
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'map'), 'index.html')
 
 @app.route('/map/<path:filename>')
 def map_static(filename):
-    return send_from_directory('montridge_flask/map', filename)
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'map'), filename)
 
 # === SERVE PAGENOTFOUND STATIC ASSETS ===
 @app.route('/pagenotfound/<path:filename>')
 def pagenotfound_static(filename):
-    return send_from_directory('montridge_flask/pagenotfound/dist', filename)
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'pagenotfound/dist'), filename)
 
 # === 404 ERROR HANDLER ===
 @app.errorhandler(404)
 def not_found(e):
-    return send_from_directory('montridge_flask/pagenotfound/dist', 'index.html'), 404
+    return send_from_directory(os.path.join(MONTRIDGE_FLASK_DIR, 'pagenotfound/dist'), 'index.html'), 404
 
 # === ARTICLES API ===
 @app.route("/api/articles")
