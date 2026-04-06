@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(0, os.path.dirname(__file__))
+
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from flask_limiter import Limiter
