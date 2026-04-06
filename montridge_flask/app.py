@@ -6,8 +6,8 @@ from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from auth import hash_password, verify_password, create_jwt_token, decode_jwt_token, extract_token_from_header, require_auth
-from db import (
+from montridge_flask.auth import hash_password, verify_password, create_jwt_token, decode_jwt_token, extract_token_from_header, require_auth
+from montridge_flask.db import (
     fetch_articles, fetch_article_by_id, get_connection, fetch_trending_topics,
     fetch_daily_briefs, fetch_breaking_news, fetch_stats, fetch_feed_health,
     fetch_source_credibility, clean_old_articles, get_story_perspectives, get_perspectives_available,
