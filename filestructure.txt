@@ -339,248 +339,71 @@
             |-- SKILL.md
     |-- statusline.mjs
     |-- statusline.sh
+|-- .env
+|-- .env.example
+|-- .env.local.example
+|-- .env.vercel
 |-- .gitignore
 |-- .mcp.json
 |-- 85)
 |-- backend
-    |-- ai_processor
-        |-- test_ollama.py
-    |-- ai_processor.py
     |-- pipeline_20260405_075001.log
     |-- pipeline_20260405_125001.log
     |-- pipeline_20260405_175001.log
     |-- pipeline_20260406_135028.log
-    |-- reprocess_existing.py
-    |-- reset_all.py
-    |-- reset_failed.py
-    |-- rss_fetcher.py
-    |-- run_pipeline.py
 |-- CLAUDE.md
+|-- DEPLOYMENT_HYBRID.md
+|-- DEPLOY_FREE.md
 |-- fix2_reprocess.py
 |-- fix_articles.py
 |-- fix_empty.py
+|-- lib
+    |-- auth.ts
+    |-- db.ts
 |-- localStorage.setItem('guestMode'
+|-- migrate_to_neon.py
+|-- montridge_backup.dump
+|-- montridge_backup.sql
 |-- montridge_flask
-    |-- .claude
-        |-- skills
-            |-- ui-ux-pro-max
-                |-- data
-                    |-- charts.csv
-                    |-- colors.csv
-                    |-- icons.csv
-                    |-- landing.csv
-                    |-- products.csv
-                    |-- react-performance.csv
-                    |-- stacks
-                        |-- astro.csv
-                        |-- flutter.csv
-                        |-- html-tailwind.csv
-                        |-- jetpack-compose.csv
-                        |-- nextjs.csv
-                        |-- nuxt-ui.csv
-                        |-- nuxtjs.csv
-                        |-- react-native.csv
-                        |-- react.csv
-                        |-- shadcn.csv
-                        |-- svelte.csv
-                        |-- swiftui.csv
-                        |-- vue.csv
-                    |-- styles.csv
-                    |-- typography.csv
-                    |-- ui-reasoning.csv
-                    |-- ux-guidelines.csv
-                    |-- web-interface.csv
-                |-- scripts
-                    |-- core.py
-                    |-- design_system.py
-                    |-- search.py
-                |-- SKILL.md
     |-- app.py
     |-- auth.py
-    |-- config.py
     |-- db.py
-    |-- dy
-    |-- extraction_log.txt
-    |-- icons.jpeg
-    |-- iconsdark.png
     |-- intelligence
-        |-- .env.example
-        |-- .gitignore
-        |-- document.body
-        |-- index.html
-        |-- metadata.json
         |-- package-lock.json
-        |-- package.json
-        |-- README.md
-        |-- src
-            |-- App.tsx
-            |-- components
-                |-- ArticleDetail.tsx
-                |-- Settings.tsx
-            |-- index.css
-            |-- main.tsx
-        |-- tsconfig.json
-        |-- vite.config.ts
     |-- login-app
-        |-- ,
-        |-- .gitignore
-        |-- index.html
-        |-- package-lock.json
-        |-- package.json
-        |-- postcss.config.js
-        |-- src
-            |-- App.tsx
-            |-- index.css
-            |-- LoginSignup.tsx
-            |-- main.tsx
-        |-- tailwind.config.js
-        |-- tsconfig.json
-        |-- tsconfig.node.json
-        |-- tsconfig.node.tsbuildinfo
-        |-- tsconfig.tsbuildinfo
-        |-- vite.config.d.ts
-        |-- vite.config.js
-        |-- vite.config.ts
-        |-- {,+
-    |-- map
-        |-- .gitignore
-        |-- index.html
-        |-- metadata.json
-        |-- migrated_prompt_history
-            |-- prompt_2026-02-02T18_29_14.837Z.json
-        |-- package.json
-        |-- README.md
     |-- newdashboard
-        |-- !el.classList.contains('open'))
-        |-- .env.example
-        |-- .gitignore
-        |-- index.html
-        |-- metadata.json
         |-- package-lock.json
         |-- package.json
-        |-- r.json())
-        |-- r.status
-        |-- README.md
-        |-- setLoading(false))]}],originalFile
-        |-- src
-            |-- App.tsx
-            |-- components
-                |-- LoadingScreen.tsx
-            |-- hooks
-                |-- useArticles.ts
-            |-- index.css
-            |-- main.tsx
-            |-- pages
-                |-- ArticleDetail.tsx
-                |-- Dashboard.tsx
-            |-- services
-                |-- api.ts
-        |-- tsconfig.json
-        |-- vite.config.ts
-        |-- {,-
     |-- newlandingpage
-        |-- .env.example
-        |-- .gitignore
-        |-- index.html
-        |-- metadata.json
         |-- package-lock.json
-        |-- package.json
-        |-- README.md
-        |-- src
-            |-- App.tsx
-            |-- components
-                |-- FeaturesSection.tsx
-                |-- FinalCTASection.tsx
-                |-- Footer.tsx
-                |-- HeroBackground.tsx
-                |-- HeroSection.tsx
-                |-- HowItWorks.tsx
-                |-- HowItWorksSection.tsx
-                |-- LiveDemoSection.tsx
-                |-- Navbar.tsx
-                |-- Pricing.tsx
-                |-- ProblemSection.tsx
-                |-- TrustSection.tsx
-                |-- WhoItsForSection.tsx
-                |-- WhyNowSection.tsx
-            |-- context
-                |-- ThemeContext.tsx
-            |-- index.css
-            |-- lib
-                |-- utils.ts
-            |-- main.tsx
-            |-- public
-                |-- icons.jpeg
-                |-- iconsdark.png
-                |-- montridgedevices.jpeg
-                |-- montridgeoutlets.jpeg
-                |-- phone.png
-        |-- tsconfig.json
-        |-- vite.config.ts
     |-- onboarding
-        |-- .env.example
-        |-- .gitignore
-        |-- index.html
-        |-- metadata.json
         |-- package-lock.json
-        |-- package.json
-        |-- README.md
-        |-- src
-            |-- App.tsx
-            |-- components
-                |-- Onboarding.tsx
-            |-- index.css
-            |-- main.tsx
-        |-- tsconfig.json
-        |-- vite.config.ts
-    |-- package-lock.json
-    |-- package.json
     |-- pagenotfound
-        |-- .env.example
-        |-- .gitignore
-        |-- index.html
-        |-- metadata.json
         |-- package-lock.json
-        |-- package.json
-        |-- README.md
-        |-- src
-            |-- App.tsx
-            |-- components
-                |-- NotFound.tsx
-            |-- index.css
-            |-- main.tsx
-        |-- tsconfig.json
-        |-- vite.config.ts
     |-- requirements.txt
     |-- settings
-        |-- .env.example
-        |-- .gitignore
-        |-- index.html
-        |-- metadata.json
         |-- package-lock.json
-        |-- package.json
-        |-- README.md
-        |-- src
-            |-- App.tsx
-            |-- components
-                |-- Settings.tsx
-            |-- index.css
-            |-- main.tsx
-        |-- tsconfig.json
-        |-- vite.config.ts
-    |-- tmpclaude-6027-cwd
     |-- __pycache__
         |-- app.cpython-313.pyc
         |-- auth.cpython-313.pyc
         |-- db.cpython-313.pyc
+|-- montridge_schema.sql
+|-- NEON_MIGRATION.md
 |-- NOW()
 |-- package-lock.json
 |-- package.json
+|-- postcss.config.js
+|-- Procfile
 |-- r.status
+|-- render.yaml
 |-- RSS_FINAL_REPORT.md
 |-- RSS_TEST_REPORT.md
 |-- run_pipeline.bat
+|-- styles
+    |-- globals.css
+|-- tailwind.config.js
 |-- test_fix_5articles.py
 |-- test_system.py
+|-- VERCEL_DEPLOYMENT.md
 |-- window.scrollBy(0
 |-- {,+
