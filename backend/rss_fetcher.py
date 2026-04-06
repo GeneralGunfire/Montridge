@@ -8,7 +8,13 @@ from datetime import datetime
 import time
 import logging
 import requests
+import os
 from typing import Dict, List, Tuple
+from dotenv import load_dotenv
+from urllib.parse import urlparse
+
+# Load environment variables
+load_dotenv()
 
 # Setup logging
 logging.basicConfig(
@@ -19,17 +25,44 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # -------------------------------
-# PostgreSQL connection settings
+# PostgreSQL connection settings (Cloud-first, local fallback)
 # -------------------------------
-DB_HOST = "localhost"
-DB_NAME = "montridge_db"
-DB_USER = "postgres"
-DB_PORT = 5432
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    # Parse cloud database URL (Neon)
+    parsed = urlparse(DATABASE_URL)
+    DB_HOST = parsed.hostname
+    DB_NAME = parsed.path.lstrip('/')
+    DB_USER = parsed.username
+    DB_PASS = parsed.password
+    DB_PORT = parsed.port or 5432
+else:
+    # Local development fallback
+    DB_HOST = os.environ.get('DB_HOST', 'localhost')
+    DB_NAME = os.environ.get('DB_NAME', 'montridge_db')
+    DB_USER = os.environ.get('DB_USER', 'postgres')
+    DB_PASS = os.environ.get('DB_PASS', '')
+    DB_PORT = int(os.environ.get('DB_PORT', 5432))
 
 # Feed timeout in seconds
 FEED_TIMEOUT = 10
 MAX_RETRIES = 2  # Try once, then retry once on failure
 RETRY_DELAY = 5  # 5-second delay before retry
+
+# Helper function to get database connection
+def get_db_connection():
+    """Get database connection with SSL support for cloud databases"""
+    kwargs = {
+        'host': DB_HOST,
+        'database': DB_NAME,
+        'user': DB_USER,
+        'password': DB_PASS,
+        'port': DB_PORT
+    }
+    # Use SSL for cloud database
+    if DATABASE_URL:
+        kwargs['sslmode'] = 'require'
+    return psycopg2.connect(**kwargs)
 
 # -------------------------------
 # RSS feeds organized by category
@@ -103,10 +136,7 @@ def parse_date(published_str):
 def log_feed_health(feed_url, category, status, articles_count=0, error_msg=None):
     """Log feed health information to feed_health table"""
     try:
-        conn = psycopg2.connect(
-            host=DB_HOST, database=DB_NAME, user=DB_USER,
-            password=DB_PASS, port=DB_PORT
-        )
+        conn = get_db_connection()
         cur = conn.cursor()
 
         # Check if this feed already exists
@@ -166,10 +196,7 @@ def log_feed_health(feed_url, category, status, articles_count=0, error_msg=None
 def update_source_credibility(source_name, articles_count):
     """Increment total_articles count for a source"""
     try:
-        conn = psycopg2.connect(
-            host=DB_HOST, database=DB_NAME, user=DB_USER,
-            password=DB_PASS, port=DB_PORT
-        )
+        conn = get_db_connection()
         cur = conn.cursor()
 
         cur.execute(
@@ -189,13 +216,7 @@ def update_source_credibility(source_name, articles_count):
 # -------------------------------
 def store_articles():
     try:
-        conn = psycopg2.connect(
-            host=DB_HOST,
-            database=DB_NAME,
-            user=DB_USER,
-            password=DB_PASS,
-            port=DB_PORT
-        )
+        conn = get_db_connection()
     except psycopg2.OperationalError as e:
         logger.error(f"Error connecting to PostgreSQL: {e}")
         print(f"Database connection failed: {e}")
