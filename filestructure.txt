@@ -420,6 +420,7 @@
 |-- tailwind.config.js
 |-- test_fix_5articles.py
 |-- test_system.py
+|-- trigger_pipeline.sh
 |-- vercel.json
 |-- VERCEL_DEPLOYMENT.md
 |-- window.scrollBy(0
