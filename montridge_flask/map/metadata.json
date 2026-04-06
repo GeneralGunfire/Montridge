@@ -1,7 +1,0 @@
-{
-  "name": "Montridge Map Intelligence",
-  "description": "A dark-themed AI news intelligence platform providing geospatial intelligence views of significant global events.",
-  "requestFramePermissions": [
-    "geolocation"
-  ]
-}
