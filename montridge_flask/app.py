@@ -14,6 +14,10 @@ from db import (
 )
 from subprocess import run as subprocess_run
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__, static_folder='newlandingpage/dist', static_url_path='')
 
