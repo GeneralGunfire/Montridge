@@ -1,12 +1,53 @@
+# Next.js
+.next/
+out/
+build/
+
+# Environment
 .env
-*.env
-venv/
-__pycache__/
-*.pyc
-*.pyo
+.env.local
+.env.*.local
+
+# Dependencies
 node_modules/
-dist/
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
+
+# Logs
 *.log
+logs/
 pipeline_*.log
-*.pyc
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# OS
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary
+*.tmp
+.cache/
