@@ -672,9 +672,10 @@ def get_active_conflicts():
 
     now = datetime.utcnow()
     results = []
+    used_article_ids = set()
 
     for cluster in CLUSTERS:
-        matched = [r for r in rows if _matches(r, cluster['keywords'])]
+        matched = [r for r in rows if _matches(r, cluster['keywords']) and r['id'] not in used_article_ids]
         if len(matched) < 2:
             continue
 
@@ -682,6 +683,9 @@ def get_active_conflicts():
         best = matched[0]
         # Most recent article
         latest = max(matched, key=lambda r: r['published_date'] or datetime.min)
+
+        # Mark this article as used to prevent duplicate descriptions in other clusters
+        used_article_ids.add(best['id'])
 
         pub = latest['published_date']
         if pub:
