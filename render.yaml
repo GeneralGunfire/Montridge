@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: montridge-api
+    runtime: python
+    buildCommand: pip install -r montridge_flask/requirements.txt
+    startCommand: gunicorn -w 4 -b 0.0.0.0:$PORT montridge_flask.app:app
+    envVars:
+      - key: DATABASE_URL
+        scope: build,run
+      - key: FLASK_ENV
+        value: production
+      - key: GROQ_API_KEY
+        scope: run
+    plan: free
+    autoDeploy: true
