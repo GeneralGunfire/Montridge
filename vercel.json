@@ -1,0 +1,13 @@
+{
+  "buildCommand": "cd montridge_flask/newlandingpage && npm install && npm run build",
+  "outputDirectory": "montridge_flask/newlandingpage/dist",
+  "routes": [
+    {
+      "src": "^/(?!api).*",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "VITE_API_URL": "@vite_api_url"
+  }
+}
