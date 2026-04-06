@@ -2,7 +2,7 @@
   "outputDirectory": "montridge_flask/newlandingpage/dist",
   "routes": [
     {
-      "src": "^/(?!api).*",
+      "src": "^/(?!api)(?!.*\\.).*$",
       "dest": "/index.html"
     }
   ]
