@@ -22,17 +22,19 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 from dotenv import load_dotenv
 load_dotenv()
 
-# --- GROQ API SETUP (FROM ENVIRONMENT) ---
-GROQ_API_KEY = os.getenv('GROQ_API_KEY', '')
-if not GROQ_API_KEY:
-    print("[WARNING] GROQ_API_KEY not set in environment. AI processing disabled.")
+# --- GROQ API SETUP (DUAL KEYS FOR 200K TOKENS/DAY) ---
+API_KEYS = [
+    os.environ.get('GROQ_API_KEY', ''),
+    os.environ.get('GROQ_API_KEY_2', '')
+]
+CURRENT_KEY_INDEX = 0
 MODEL = "llama-3.3-70b-versatile"
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
-# --- DATABASE SETUP (FROM ENVIRONMENT) ---
-DATABASE_URL = os.getenv('DATABASE_URL', None)
+# --- DATABASE SETUP (Support both local and cloud) ---
+DATABASE_URL = os.environ.get('DATABASE_URL')
 if DATABASE_URL:
-    # Parse PostgreSQL connection string
+    # Parse Neon/Cloud PostgreSQL URL
     from urllib.parse import urlparse
     parsed = urlparse(DATABASE_URL)
     DB_CONFIG = {
@@ -44,7 +46,7 @@ if DATABASE_URL:
         'sslmode': 'require'
     }
 else:
-    # Local fallback
+    # Local development
     DB_CONFIG = {
         'dbname': 'montridge_db',
         'user': 'postgres',
@@ -61,7 +63,7 @@ ENHANCEMENT_THRESHOLD = 85
 def get_current_headers():
     """Get headers with current API key."""
     return {
-        "Authorization": f"Bearer {GROQ_API_KEY}",
+        "Authorization": f"Bearer {API_KEYS[CURRENT_KEY_INDEX]}",
         "Content-Type": "application/json"
     }
 
