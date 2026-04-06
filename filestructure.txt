@@ -347,10 +347,18 @@
 |-- .mcp.json
 |-- 85)
 |-- backend
+    |-- ai_processor
+        |-- test_ollama.py
+    |-- ai_processor.py
     |-- pipeline_20260405_075001.log
     |-- pipeline_20260405_125001.log
     |-- pipeline_20260405_175001.log
     |-- pipeline_20260406_135028.log
+    |-- reprocess_existing.py
+    |-- reset_all.py
+    |-- reset_failed.py
+    |-- rss_fetcher.py
+    |-- run_pipeline.py
 |-- CLAUDE.md
 |-- DEPLOYMENT_HYBRID.md
 |-- DEPLOY_FREE.md
@@ -371,6 +379,14 @@
     |-- intelligence
         |-- package-lock.json
     |-- login-app
+    |-- map
+        |-- .gitignore
+        |-- index.html
+        |-- metadata.json
+        |-- migrated_prompt_history
+            |-- prompt_2026-02-02T18_29_14.837Z.json
+        |-- package.json
+        |-- README.md
     |-- newdashboard
         |-- package-lock.json
         |-- package.json
@@ -404,6 +420,7 @@
 |-- tailwind.config.js
 |-- test_fix_5articles.py
 |-- test_system.py
+|-- vercel.json
 |-- VERCEL_DEPLOYMENT.md
 |-- window.scrollBy(0
 |-- {,+
