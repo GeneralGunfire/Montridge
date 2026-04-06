@@ -4,6 +4,7 @@ Runs RSS fetching + AI processing every 5 hours via Task Scheduler
 """
 
 import sys
+import os
 import subprocess
 from datetime import datetime
 import logging
@@ -35,13 +36,16 @@ def run_rss_fetcher():
     """Run the RSS fetcher script."""
     print_header("STEP 1: RSS FETCHER")
     logger.info(">> Fetching articles from news sources...\n")
-    
+
     try:
+        # Get the backend directory path
+        backend_dir = os.path.dirname(os.path.abspath(__file__))
         result = subprocess.run(
-            [sys.executable, 'rss_fetcher.py'],
+            [sys.executable, os.path.join(backend_dir, 'rss_fetcher.py')],
             capture_output=True,
             text=True,
-            check=True
+            check=True,
+            cwd=backend_dir
         )
         
         logger.info(result.stdout)
@@ -64,13 +68,16 @@ def run_ai_processor():
     """Run the AI processor script."""
     print_header("STEP 2: AI PROCESSOR")
     logger.info(">> Processing articles with AI...\n")
-    
+
     try:
+        # Get the backend directory path
+        backend_dir = os.path.dirname(os.path.abspath(__file__))
         result = subprocess.run(
-            [sys.executable, 'ai_processor.py'],
+            [sys.executable, os.path.join(backend_dir, 'ai_processor.py')],
             capture_output=True,
             text=True,
-            check=True
+            check=True,
+            cwd=backend_dir
         )
         
         logger.info(result.stdout)
